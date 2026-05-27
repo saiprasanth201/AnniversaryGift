@@ -39,7 +39,7 @@ body {
 }
 
 #card {
-  width: 960px;
+  width: min(960px, 95vw);
   margin: auto;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -378,8 +378,8 @@ font-family: 'Lobster', cursive;
 }
 
 .polaroid {
-  width: 420px;
-  height: 420px;
+  width: min(420px, 85vw);
+  height: min(420px, 85vw);
   position: absolute;
   float: left;
   top: -20px;
@@ -432,5 +432,129 @@ font-family: 'Lobster', cursive;
   }
   to {
     opacity: 1;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media screen and (max-width: 768px) {
+
+  body{
+    overflow-x: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #card {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+    position: relative;
+    perspective: 3000px;
+  }
+
+  #card,
+  #card-front,
+  #card-inside {
+    height: auto;
+    min-height: 650px;
+  }
+
+  #card-front,
+  #card-inside {
+    width: 100%;
+    left: 0;
+    position: absolute;
+  }
+
+  .wrap {
+    padding: 1.2em;
+  }
+
+  /* Heading */
+  #card h1 {
+    font-size: 38px;
+    line-height: 1.2;
+  }
+
+  /* Paragraph text */
+  #card-inside {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Polaroid image */
+  .polaroid {
+    width: 260px;
+    height: 260px;
+    top: -10px;
+    border-bottom: 35px solid #f5f5f5;
+  }
+
+  /* Cake section */
+  .cake_and_velas {
+    transform: scale(0.75);
+    bottom: 18%;
+  }
+
+  /* Buttons */
+  #card-front button {
+    font-size: 1rem;
+    padding: 0.5em 0.8em;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  /* Text section */
+  .text h1 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  /* Make opening animation smoother on phone */
+  #card.open-half #card-front,
+  #card.close-half #card-front {
+    transform: rotateY(-85deg);
+  }
+
+  #card.open-fully #card-front {
+    transform: rotateY(-180deg);
+  }
+}
+
+
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
+
+@media screen and (max-width: 480px) {
+
+  #card h1 {
+    font-size: 30px;
+  }
+
+  .polaroid {
+    width: 220px;
+    height: 220px;
+  }
+
+  #card-inside {
+    font-size: 0.95rem;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .cake_and_velas {
+    transform: scale(0.6);
   }
 }
